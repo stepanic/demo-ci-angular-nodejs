@@ -1,0 +1,31 @@
+{
+  "name": "demo-ci",
+  "version": "0.0.1",
+  "description": "Demo CI with Angular and Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stepanic/demo-ci-angular-nodejs"
+  },
+  "keywords": [
+    "ci",
+    "angular",
+    "node"
+  ],
+  "author": "Matija Stepanic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stepanic/demo-ci-angular-nodejs/issues"
+  },
+  "homepage": "https://github.com/stepanic/demo-ci-angular-nodejs",
+  "dependencies": {
+    "express": "^4.10.2",
+    "jade": "^1.7.0"
+  },
+  "devDependencies": {
+    "bower": "^1.3.12"
+  }
+}

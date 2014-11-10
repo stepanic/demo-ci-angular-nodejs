@@ -1,0 +1,34 @@
+{
+  "name": "demo-ci-angular-nodejs",
+  "version": "0.0.1",
+  "homepage": "https://github.com/stepanic/demo-ci-angular-nodejs",
+  "authors": [
+    "Matija Stepanic <stepanic.matija@gmail.com>"
+  ],
+  "description": "Demo Continuous Integration with Angular and Node.js",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "keywords": [
+    "ci",
+    "angular",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "angular": "~1.3.2",
+    "bootstrap": "~3.3.0"
+  }
+}
