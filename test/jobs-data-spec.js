@@ -16,6 +16,11 @@ function findJobs(query) {
 }
 
 describe("get jobs", function() {
+
+  before(function(done) {
+    done();
+  });
+
   it("should never be empty since jobs are seeded", function(done) {
     connectDB('mongodb://demo:demo1234@ds051740.mongolab.com:51740/heroku_app31481344')
       .then(resetJobs)
@@ -25,5 +30,9 @@ describe("get jobs", function() {
         expect(jobsList.length).to.be.at.least(1);
         done();
       });
+  });
+
+  it("should have a job with title", function() {
+
   });
 });

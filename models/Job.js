@@ -8,15 +8,25 @@ var jobSchema = mongoose.Schema({
 
 var Job = mongoose.model('Job',jobSchema);
 
+var jobs = [
+  {title:'Cook', description:"You will be making bagels"},
+  {title:'Waiter', description:"You will be putting food on peoples tab"},
+  {title:'Programmer', description:"You will be mindlessly typing"},
+  {title:'Axe Maker', description:"We need many axes made.. so many.."}
+];
+
+function findJobs(query) {
+  return Promise.cast(mongoose.model('Job').find(query).exec());
+}
+
+var createJob = Promise.promisify(Job.create, Job);
+
 exports.seedJobs = function() {
-  return new Promise( function(resolve, reject) {
-    Job.find().exec(function(error, collection) {
+    return findJobs().then(function(collection) {
       if (collection.length === 0) {
-        Job.create({title:'Cook', description:"You will be making bagels"});
-        Job.create({title:'Waiter', description:"You will be putting food on peoples tab"});
-        Job.create({title:'Programmer', description:"You will be mindlessly typing"});
-        Job.create({title:'Axe Maker', description:"We need many axes made.. so many.."}, resolve);
+        return Promise.map(jobs, function(job) {
+          return createJob(job);
+        })
       }
     });
-  });
 }
