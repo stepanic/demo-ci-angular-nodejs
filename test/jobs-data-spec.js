@@ -1,29 +1,19 @@
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
-var jobModel = require('../models/Job');
 var Promise = require('bluebird');
 
-function resetJobs() {
-  return new Promise( function(resolve, reject) {
-    mongoose.connection.collections['jobs'].drop(resolve, reject);
-  });
-}
-
-var connectDB = Promise.promisify(mongoose.connect, mongoose);
-
-function findJobs(query) {
-  return Promise.cast(mongoose.model('Job').find(query).exec());
-}
+var jobModel = require('../models/Job');
+var jobsData = require('../jobs-data.js');
 
 describe("get jobs", function() {
 
   var jobs;
 
   before(function(done) {
-    connectDB('mongodb://demo:demo1234@ds051740.mongolab.com:51740/heroku_app31481344')
-      .then(resetJobs)
-      .then(jobModel.seedJobs)
-      .then(findJobs)
+    jobsData.connectDB('mongodb://demo:demo1234@ds051740.mongolab.com:51740/heroku_app31481344')
+      .then(jobsData.resetJobs)
+      .then(jobsData.seedJobs)
+      .then(jobsData.findJobs)
       .then (function(collection) {
         jobs = collection;
         done();
