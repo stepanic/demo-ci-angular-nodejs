@@ -17,22 +17,28 @@ function findJobs(query) {
 
 describe("get jobs", function() {
 
-  before(function(done) {
-    done();
-  });
+  var jobs;
 
-  it("should never be empty since jobs are seeded", function(done) {
+  before(function(done) {
     connectDB('mongodb://demo:demo1234@ds051740.mongolab.com:51740/heroku_app31481344')
       .then(resetJobs)
       .then(jobModel.seedJobs)
       .then(findJobs)
-      .then (function(jobsList) {
-        expect(jobsList.length).to.be.at.least(1);
+      .then (function(collection) {
+        jobs = collection;
         done();
       });
   });
 
-  it("should have a job with title", function() {
+  it("should never be empty since jobs are seeded", function() {
+    expect(jobs.length).to.be.at.least(1);
+  });
 
+  it("should have a job with title", function() {
+    expect(jobs[0].title).to.not.be.empty;
+  });
+
+  it("should have a job with description", function() {
+    expect(jobs[0].description).to.not.be.empty;
   });
 });
