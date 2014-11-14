@@ -6,7 +6,3 @@ var jobSchema = mongoose.Schema({
 });
 
 mongoose.model('Job', jobSchema);
-
-
-
-
