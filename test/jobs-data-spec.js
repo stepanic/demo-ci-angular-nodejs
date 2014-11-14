@@ -10,7 +10,7 @@ describe("get jobs", function() {
   var jobs;
 
   before(function(done) {
-    jobsData.connectDB('mongodb://demo:demo1234@ds051740.mongolab.com:51740/heroku_app31481344')
+    jobsData.connectDB('mongodb://BROKEdemo:demo1234@ds051740.mongolab.com:51740/heroku_app31481344')
       .then(jobsData.resetJobs)
       .then(jobsData.seedJobs)
       .then(jobsData.findJobs)
