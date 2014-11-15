@@ -16,9 +16,13 @@ var jobs = [
   {title:'Axe Maker', description:"We need many axes made.. so many.."}
 ];
 
+//exports
+
 exports.findJobs = findJobs;
+
 exports.connectDB = Promise.promisify(mongoose.connect, mongoose);
 
+exports.saveJob = createJob;
 
 exports.seedJobs = function() {
     return findJobs({}).then(function(collection) {
